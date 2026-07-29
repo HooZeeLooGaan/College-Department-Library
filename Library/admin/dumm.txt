@@ -1,0 +1,34 @@
+$sql2 ="SELECT series FROM issuedbookdetails WHERE BookId=:bookid and RetrunStatus = 0";
+$query2= $dbh -> prepare($sql2);
+$query2-> bindParam(':bookid', $bookid, PDO::PARAM_STR);
+$query2-> execute();
+$results2 = $query2 -> fetchAll(PDO::FETCH_OBJ);
+$po=$query2->rowCount();
+$sers=array();
+
+
+foreach ($results2 as $key) {
+	$sers[$i]=$key->series;
+	$i++;
+}
+
+
+if(in_array($i,$sers))
+		{
+			$j++;
+		}
+		else
+		{
+
+
+	}
+
+
+
+	for($i;$i<=($i+$j);$i++)
+	{
+		
+		?>
+		<option value="<?php echo htmlentities($j);?>"><?php echo htmlentities($j);?></option><?php
+		
+	}
